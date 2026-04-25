@@ -64,14 +64,29 @@ while True:
             este_conectat = False
 
     elif comanda == 'PUBLISH':
+        if not este_conectat:
+            print("EROARE locala: Nu esti conectat. Foloseste CONNECT mai intai.")
+            continue
+        if len(parti) < 2 or not parti[1].strip():
+            print("EROARE locala: Trebuie sa furnizezi un text. Ex: PUBLISH salut")
+            continue
         raspuns = trimite_comanda(intrare)
         print(raspuns)
 
     elif comanda == 'DELETE':
+        if not este_conectat:
+            print("EROARE locala: Nu esti conectat. Foloseste CONNECT mai intai.")
+            continue
+        if len(parti) < 2 or not parti[1].strip().isdigit():
+            print("EROARE locala: Argumentul trebuie sa fie un numar. Ex: DELETE 1")
+            continue
         raspuns = trimite_comanda(intrare)
         print(raspuns)
 
     elif comanda == 'LIST':
+        if not este_conectat:
+            print("EROARE locala: Nu esti conectat. Foloseste CONNECT mai intai.")
+            continue
         raspuns = trimite_comanda(intrare)
         print(raspuns)
 
